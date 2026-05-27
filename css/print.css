@@ -10,7 +10,6 @@
     print-color-adjust: exact !important;
   }
 
-  /* ローカルフォントを印刷時も使用 */
   body,
   .slide-container {
     font-family: "Urbanist", "Noto Sans JP", sans-serif !important;
@@ -18,10 +17,10 @@
 
   html,
   body {
+    background: #e8ede4 !important;
     margin: 0 !important;
     padding: 0 !important;
     width: 1280px !important;
-    background: #121212 !important;
   }
 
   body {
@@ -31,23 +30,21 @@
     place-items: unset !important;
   }
 
-  /* 改ページのみ指定。padding・配置は style.css に任せる */
   .slide-container {
-    width: 1280px !important;
-    height: 720px !important;
-    max-width: 1280px !important;
-    min-width: 1280px !important;
-    min-height: 720px !important;
-    max-height: 720px !important;
-    margin: 0 !important;
+    break-after: page !important;
+    break-inside: avoid !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-    page-break-after: always !important;
-    break-after: page !important;
+    height: 720px !important;
+    margin: 0 !important;
+    max-height: 720px !important;
+    max-width: 1280px !important;
+    min-height: 720px !important;
+    min-width: 1280px !important;
     overflow: hidden !important;
-    justify-content: center !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    width: 1280px !important;
   }
 
   .slide-container:has(.slide-title):has(.content-area) {
@@ -55,15 +52,14 @@
   }
 
   .slide-container:last-child {
-    page-break-after: auto !important;
     break-after: auto !important;
+    page-break-after: auto !important;
   }
 
-  /* ブリード画像スライド */
   .slide-container.bleed-image-layout {
-    padding: 0 !important;
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
+    padding: 0 !important;
   }
 
   .bleed-image-layout .content-container {
@@ -75,7 +71,7 @@
     height: 720px !important;
     max-height: 720px !important;
     max-width: 560px !important;
-    padding: 56px 56px 56px 32px !important;
+    padding: 52px 52px 52px 28px !important;
   }
 
   .bleed-image-grid__item img {
@@ -88,68 +84,74 @@
     right: 40px;
   }
 
-  /* テキスト量の多いスライド（画面と同じ余白） */
-  #slide2.slide-container {
-    padding: 52px 56px 48px !important;
+  #slide02.slide-container {
     justify-content: flex-start !important;
+    padding: 48px 56px 44px !important;
   }
 
-  #slide3.slide-container {
-    padding: 48px 60px 44px !important;
+  #slide04.slide-container,
+  #slide26.slide-container {
     justify-content: flex-start !important;
+    padding: 44px 56px 40px !important;
   }
 
-  #slide2 .content-area {
+  #slide02 .content-area {
     flex: 1 1 0 !important;
-    min-height: 0 !important;
     justify-content: center !important;
+    min-height: 0 !important;
   }
 
-  #slide3 .content-area {
-    flex: 1 1 0 !important;
-    min-height: 0 !important;
+  #slide04 .content-area,
+  #slide26 .content-area {
     display: flex !important;
+    flex: 1 1 0 !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
-  }
-
-  #slide3 .strength-list {
-    flex: 1 1 0 !important;
-    justify-content: space-evenly !important;
-    width: 100% !important;
-    margin: 0 !important;
-    gap: 0 !important;
-  }
-
-  #slide3 .strength-row {
-    grid-template-columns: 300px 1fr !important;
-    gap: 32px !important;
-  }
-
-  .slide-container:has(.slide-title):has(.content-area):not(#slide3) .content-area {
-    flex: 1 1 0 !important;
     min-height: 0 !important;
-    justify-content: center !important;
   }
 
-  .bleed-image-layout .content-container {
-    justify-content: center !important;
+  #slide04 .strength-list,
+  #slide26 .strength-list {
+    flex: 1 1 0 !important;
+    gap: 0 !important;
+    justify-content: space-evenly !important;
+    margin: 0 !important;
+    width: 100% !important;
   }
 
+  #slide04 .strength-row,
+  #slide26 .strength-row {
+    gap: 10px !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  #slide08 .timeline {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .bleed-image-grid__item img {
+    max-height: 220px !important;
+  }
+
+  .slide-container:has(.slide-title):has(.content-area):not(#slide04):not(#slide26) .content-area {
+    flex: 1 1 0 !important;
+    justify-content: center !important;
+    min-height: 0 !important;
+  }
+
+  .bleed-image-layout .content-container,
   .bleed-image-layout .content-area {
     justify-content: center !important;
   }
 
-  #slide13 .content-area {
+  #slide24 .content-area {
     justify-content: center !important;
   }
 
-  /* タイトルのみのスライドは縦中央 */
   .slide-container:not(:has(.slide-title)):not(.bleed-image-layout),
-  .slide-container:has(.title-layout):not(:has(.content-area)) {
-    justify-content: center !important;
-  }
-
+  .slide-container:has(.title-layout):not(:has(.content-area)),
+  .slide-container:has(.section-layout),
   .slide-container:has(.qa-layout) {
     justify-content: center !important;
   }
