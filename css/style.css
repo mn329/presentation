@@ -68,7 +68,7 @@ body {
   flex-direction: column;
   font-family: "Urbanist", "Noto Sans JP", sans-serif;
   height: 720px;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
   padding: 40px 48px 36px;
   position: relative;
@@ -149,9 +149,14 @@ p + p {
   margin-top: 10px;
 }
 
+.slide-title,
+.app-title {
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
 .slide-title {
   border-left: 6px solid var(--color-accent);
-  flex-shrink: 0;
   font-size: var(--fs-slide-title);
   line-height: 1.25;
   margin-bottom: 20px;
@@ -176,6 +181,10 @@ p + p {
   margin-bottom: 20px;
 }
 
+.slide-container:has(.slide-title):has(.content-area) .content-area {
+  justify-content: center;
+}
+
 .placeholder {
   background: var(--color-accent-light);
   border: 1px dashed var(--color-border);
@@ -196,6 +205,8 @@ p + p {
 /* 表紙・セクション扉 */
 .title-layout,
 .section-layout {
+  align-self: stretch;
+  flex-shrink: 0;
   text-align: center;
   width: 100%;
 }
@@ -236,6 +247,21 @@ p + p {
 
 .section-layout h1 {
   font-size: var(--fs-section-title);
+}
+
+/* 表紙・セクション扉・Thank You — 縦方向中央配置 */
+#slide01.slide-container,
+#slide09.slide-container,
+#slide27.slide-container,
+#slide30.slide-container {
+  justify-content: center;
+}
+
+#slide01.slide-container::after,
+#slide09.slide-container::after,
+#slide27.slide-container::after,
+#slide30.slide-container::after {
+  display: none;
 }
 
 /* 自己紹介 */
@@ -394,6 +420,10 @@ p + p {
   max-width: 900px;
 }
 
+.hobby-list--no-icon li {
+  padding-left: 0;
+}
+
 #slide02.slide-container {
   justify-content: flex-start;
   padding: 36px 44px 32px;
@@ -415,37 +445,117 @@ p + p {
 }
 
 /* ガクチカ */
-.gakuchika-block {
+.gakuchika-layout {
+  align-items: center;
+  display: grid;
+  gap: 32px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   width: 100%;
 }
 
-.gakuchika-block__heading {
-  color: var(--color-text);
-  font-size: var(--fs-gakuchika-head);
-  font-weight: 700;
-  margin: 0 0 18px;
+.gakuchika-main {
+  min-width: 0;
 }
 
-.gakuchika-dl {
+.gakuchika-event {
+  color: var(--color-text-muted);
+  font-size: var(--fs-body-sm);
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.gakuchika-gallery {
+  align-content: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+
+.gakuchika-gallery__item {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-height: 0;
+}
+
+.gakuchika-gallery__item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.gakuchika-gallery__item img {
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  width: auto;
+}
+
+#slide12 .app-title {
+  font-size: var(--fs-slide-title-sm);
+}
+
+#slide22 .app-title {
+  font-size: 38px;
+  white-space: nowrap;
+}
+
+#slide05.slide-container {
+  padding: 36px 44px 32px;
+}
+
+#slide05 .slide-title {
+  font-size: var(--fs-slide-title-sm);
+  margin-bottom: 12px;
+}
+
+#slide05 .content-area {
+  flex: 1 1 0;
+  justify-content: center;
+  min-height: 0;
+}
+
+#slide05 .gakuchika-layout {
+  align-items: stretch;
+  flex: 1 1 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  max-height: 560px;
+  min-height: 0;
+}
+
+#slide05 .gakuchika-gallery {
+  align-self: stretch;
+  gap: 8px;
+  height: 100%;
+}
+
+#slide05 .gakuchika-gallery__item img {
+  max-height: 168px;
+}
+
+#slide05 .gakuchika-event:empty {
+  display: none;
   margin: 0;
 }
 
-.gakuchika-dl dt {
-  color: var(--color-accent-dark);
-  font-size: var(--fs-label);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin: 0 0 6px;
+#slide05 .gakuchika-main {
+  align-self: center;
 }
 
-.gakuchika-dl dd {
-  font-size: var(--fs-body-md);
-  line-height: 1.55;
-  margin: 0 0 16px;
+#slide05 .hobby-list li {
+  font-size: var(--fs-body-sm);
+  margin-bottom: 18px;
 }
 
-.gakuchika-dl dd:last-child {
-  margin-bottom: 0;
+#slide05 .hobby-list li strong {
+  font-size: var(--fs-hobby-title);
+  margin-bottom: 4px;
 }
 
 /* タイムライン */
@@ -453,29 +563,45 @@ p + p {
   list-style: none;
   margin: 0;
   padding: 0;
+  position: relative;
   width: 100%;
 }
 
+.timeline::before {
+  background: var(--color-accent-soft);
+  bottom: 8px;
+  content: "";
+  left: 118.5px;
+  position: absolute;
+  top: 8px;
+  width: 3px;
+}
+
 .timeline li {
-  border-left: 3px solid var(--color-accent-soft);
+  border-left: none;
+  column-gap: 8px;
   display: grid;
-  gap: 8px 16px;
-  grid-template-columns: 110px 1fr;
-  margin-bottom: 12px;
-  padding: 0 0 12px 18px;
+  grid-template-columns: 100px 24px minmax(0, 1fr);
+  margin-bottom: 6px;
+  padding: 0 0 6px;
   position: relative;
 }
 
 .timeline li::before {
+  align-self: start;
   background: var(--color-accent);
   border: 3px solid var(--color-slide);
   border-radius: 50%;
+  box-sizing: border-box;
   content: "";
+  grid-column: 2;
+  grid-row: 1;
   height: 12px;
-  left: -8px;
-  position: absolute;
-  top: 4px;
+  justify-self: center;
+  margin-top: 4px;
+  position: relative;
   width: 12px;
+  z-index: 1;
 }
 
 .timeline li:last-child {
@@ -492,7 +618,16 @@ p + p {
   color: var(--color-accent-dark);
   font-size: var(--fs-caption);
   font-weight: 700;
+  grid-column: 1;
   line-height: 1.35;
+  padding-right: 4px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.timeline__body {
+  grid-column: 3;
+  min-width: 0;
 }
 
 .timeline__body strong {
@@ -518,28 +653,52 @@ p + p {
 }
 
 #slide08 .content-area {
-  justify-content: flex-start;
+  justify-content: center;
+  overflow: hidden;
 }
 
-#slide08 .timeline {
+.timeline-layout__heading {
+  align-self: stretch;
+  color: var(--color-accent-dark);
   display: grid;
-  gap: 0 28px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 100px 24px minmax(0, 1fr);
+  column-gap: 8px;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  margin: 0 0 12px;
+  width: 100%;
+}
+
+.timeline-layout__heading-text {
+  grid-column: 3;
+}
+
+#slide08 .timeline-layout__heading {
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
 #slide08 .timeline li {
-  gap: 6px 12px;
-  grid-template-columns: 96px 1fr;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+#slide08 .timeline__date {
+  font-size: 22px;
 }
 
 #slide08 .timeline__body strong {
-  font-size: var(--fs-body-sm);
+  font-size: 23px;
+  line-height: 1.3;
+  margin-bottom: 0;
 }
 
 #slide08 .timeline__body p {
-  font-size: var(--fs-caption);
+  font-size: 20px;
+  line-height: 1.35;
+  margin-top: 2px;
 }
 
 /* 概要ブロック */
@@ -648,38 +807,39 @@ p + p {
 }
 
 #slide04.slide-container,
-#slide26.slide-container {
+#slide28.slide-container {
   justify-content: flex-start;
   padding: 36px 44px 32px;
 }
 
 #slide04 .slide-title,
-#slide26 .slide-title {
+#slide28 .slide-title {
   font-size: var(--fs-slide-title-sm);
   margin-bottom: 14px;
 }
 
 #slide04 .strength-list li,
-#slide26 .strength-list li {
+#slide28 .strength-list li {
   margin-bottom: 8px;
 }
 
-#slide26 .slide-footnote {
+#slide28 .slide-footnote {
   font-size: var(--fs-caption);
   margin-top: 8px;
 }
 
 #slide04 .content-area,
-#slide26 .content-area {
+#slide28 .content-area {
   flex: 1 1 0;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 0;
 }
 
 #slide04 .strength-list,
-#slide26 .strength-list {
-  flex: 1 1 0;
-  justify-content: space-evenly;
+#slide28 .strength-list {
+  flex: 0 1 auto;
+  gap: 20px;
+  justify-content: flex-start;
 }
 
 /* ブリード画像 */
