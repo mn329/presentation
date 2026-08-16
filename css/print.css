@@ -66,13 +66,13 @@
   }
 
   .app-tech-stack__item {
-    height: 52px !important;
-    width: 52px !important;
+    height: 68px !important;
+    width: 68px !important;
   }
 
   .app-tech-stack__item .tech-icon {
-    height: 34px !important;
-    width: 34px !important;
+    height: 44px !important;
+    width: 44px !important;
   }
 
   .app-intro {
@@ -142,12 +142,46 @@
     right: 40px;
   }
 
-  #slide05 .gakuchika-gallery__item img {
+  #slideDotlog.slide-container {
+    padding: 36px 44px 32px !important;
+  }
+
+  #slideDotlog .dotlog-columns {
+    align-content: center !important;
+    display: grid !important;
+    gap: 48px !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    padding: 12px 12px 24px 22px !important;
+  }
+
+  .dev-challenge__grid {
+    display: grid !important;
+    gap: 12px 28px !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .gakuchika-gallery--stacked {
+    align-content: center !important;
+    gap: 12px !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    justify-items: center !important;
+    width: 100% !important;
+  }
+
+  .gakuchika-gallery--stacked .gakuchika-gallery__item {
+    border-radius: 12px !important;
+    max-width: 420px !important;
+    overflow: hidden !important;
+    width: 92% !important;
+  }
+
+  .gakuchika-gallery--stacked .gakuchika-gallery__item img {
+    border-radius: 12px !important;
     height: auto !important;
-    max-height: 168px !important;
-    max-width: 100% !important;
-    object-fit: contain !important;
-    width: auto !important;
+    max-height: 255px !important;
+    object-fit: cover !important;
+    width: 100% !important;
   }
 
   #slide02.slide-container {
@@ -156,7 +190,7 @@
   }
 
   #slide04.slide-container,
-  #slide28.slide-container {
+  #slide29.slide-container {
     justify-content: flex-start !important;
     padding: 44px 56px 40px !important;
   }
@@ -168,7 +202,7 @@
   }
 
   #slide04 .content-area,
-  #slide28 .content-area {
+  #slide29 .content-area {
     display: flex !important;
     flex: 1 1 0 !important;
     flex-direction: column !important;
@@ -177,7 +211,7 @@
   }
 
   #slide04 .strength-list,
-  #slide28 .strength-list {
+  #slide29 .strength-list {
     flex: 0 1 auto !important;
     gap: 20px !important;
     justify-content: flex-start !important;
@@ -185,8 +219,7 @@
     width: 100% !important;
   }
 
-  #slide04 .strength-row,
-  #slide28 .strength-row {
+  #slide29 .strength-row {
     gap: 10px !important;
     grid-template-columns: 1fr !important;
   }
@@ -222,7 +255,7 @@
     display: block !important;
   }
 
-  .slide-container:has(.slide-title):has(.content-area):not(#slide04):not(#slide28) .content-area {
+  .slide-container:has(.slide-title):has(.content-area):not(#slide29) .content-area {
     flex: 1 1 0 !important;
     justify-content: center !important;
     min-height: 0 !important;
