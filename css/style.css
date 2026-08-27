@@ -221,6 +221,9 @@ p + p {
 
 .title-layout h1 span {
   color: var(--color-accent);
+  font-size: 0.48em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
 }
 
 .title-layout .subtitle,
@@ -229,12 +232,13 @@ p + p {
   font-size: var(--fs-cover-sub);
   font-weight: 500;
   letter-spacing: 2px;
+  margin: 0 0 18px;
 }
 
 .title-layout .author {
   color: var(--color-text-muted);
   font-size: var(--fs-cover-author);
-  margin-top: 28px;
+  margin-top: 8px;
 }
 
 .section-layout__number {
@@ -531,7 +535,8 @@ p + p {
   white-space: nowrap;
 }
 
-#slideDotlog .app-title {
+#slideDotlog .app-title,
+#slideFuller .app-title {
   border-left: 6px solid var(--color-accent);
   color: var(--color-text);
   flex-shrink: 0;
@@ -543,20 +548,24 @@ p + p {
   white-space: nowrap;
 }
 
-#slideDotlog .app-title span {
+#slideDotlog .app-title span,
+#slideFuller .app-title span {
   color: var(--color-accent);
 }
 
-#slideDotlog.slide-container {
+#slideDotlog.slide-container,
+#slideFuller.slide-container {
   padding: 36px 44px 32px;
 }
 
-#slideDotlog .app-tech-stack {
+#slideDotlog .app-tech-stack,
+#slideFuller .app-tech-stack {
   margin-bottom: 28px;
   padding-left: 22px;
 }
 
-#slideDotlog .dotlog-columns {
+#slideDotlog .dotlog-columns,
+#slideFuller .dotlog-columns {
   align-content: center;
   display: grid;
   flex: 1 1 0;
@@ -566,38 +575,45 @@ p + p {
   padding: 12px 12px 24px 22px;
 }
 
-#slideDotlog .dotlog-columns__section {
+#slideDotlog .dotlog-columns__section,
+#slideFuller .dotlog-columns__section {
   min-width: 0;
 }
 
-#slideDotlog .dotlog-columns__section p {
+#slideDotlog .dotlog-columns__section p,
+#slideFuller .dotlog-columns__section p {
   color: var(--color-text-muted);
   font-size: var(--fs-body-sm);
   line-height: 1.55;
 }
 
-#slideDotlog .dotlog-columns__section p + p {
+#slideDotlog .dotlog-columns__section p + p,
+#slideFuller .dotlog-columns__section p + p {
   margin-top: 14px;
 }
 
-#slideDotlog .dotlog-columns__section > p:first-of-type {
+#slideDotlog .dotlog-columns__section > p:first-of-type,
+#slideFuller .dotlog-columns__section > p:first-of-type {
   font-size: var(--fs-body);
   line-height: 1.4;
   margin-bottom: 4px;
 }
 
-#slideDotlog .dotlog-columns__section .simple-list {
+#slideDotlog .dotlog-columns__section .simple-list,
+#slideFuller .dotlog-columns__section .simple-list {
   margin-top: 16px;
 }
 
-#slideDotlog .dotlog-columns__section .simple-list li {
+#slideDotlog .dotlog-columns__section .simple-list li,
+#slideFuller .dotlog-columns__section .simple-list li {
   color: var(--color-text-muted);
   font-size: var(--fs-body-sm);
   line-height: 1.5;
   margin-bottom: 14px;
 }
 
-#slideDotlog .dotlog-columns__section .simple-list li:last-child {
+#slideDotlog .dotlog-columns__section .simple-list li:last-child,
+#slideFuller .dotlog-columns__section .simple-list li:last-child {
   margin-bottom: 0;
 }
 
@@ -770,29 +786,29 @@ p + p {
 }
 
 #slide08 .timeline-layout__heading {
-  font-size: 24px;
-  margin-bottom: 6px;
+  font-size: 22px;
+  margin-bottom: 4px;
 }
 
 #slide08 .timeline li {
-  margin-bottom: 2px;
-  padding-bottom: 2px;
+  margin-bottom: 1px;
+  padding-bottom: 1px;
 }
 
 #slide08 .timeline__date {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #slide08 .timeline__body strong {
-  font-size: 21px;
+  font-size: 19px;
   line-height: 1.25;
   margin-bottom: 0;
 }
 
 #slide08 .timeline__body p {
-  font-size: 18px;
-  line-height: 1.3;
-  margin-top: 1px;
+  font-size: 16px;
+  line-height: 1.25;
+  margin-top: 0;
 }
 
 /* 概要ブロック */
@@ -877,6 +893,7 @@ p + p {
 
 #slide13learn.slide-container,
 #slide23learn.slide-container,
+#slideFullerLearn.slide-container,
 #slideDotlogLearn.slide-container,
 #slide18.slide-container,
 #slide20learn.slide-container {
@@ -885,6 +902,7 @@ p + p {
 
 #slide13learn .slide-title,
 #slide23learn .slide-title,
+#slideFullerLearn .slide-title,
 #slideDotlogLearn .slide-title,
 #slide18 .slide-title,
 #slide20learn .slide-title {

@@ -142,11 +142,13 @@
     right: 40px;
   }
 
-  #slideDotlog.slide-container {
+  #slideDotlog.slide-container,
+  #slideFuller.slide-container {
     padding: 36px 44px 32px !important;
   }
 
-  #slideDotlog .dotlog-columns {
+  #slideDotlog .dotlog-columns,
+  #slideFuller .dotlog-columns {
     align-content: center !important;
     display: grid !important;
     gap: 48px !important;
